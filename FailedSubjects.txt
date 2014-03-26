@@ -1,0 +1,7 @@
+'Données brutes IGT CS Montpellier IV (Adéla)'	'AM_BOU_JE_ 956.txt'
+'Données brutes IGT CS Montpellier IV (Adéla)'	'AM_JOS_CE_ 753.txt'
+'Données brutes IGT CS Montpellier IV (Adéla)'	'data_file.txt'
+'Données brutes IGT CS Montpellier IV (Adéla)'	'Expectancy valence Adéla.xls'
+'Données brutes IGT témoins affectifs Montpellier III (Sébastien)'	'TA BEL VI 08.WIN'
+'Données brutes IGT témoins sains Montpellier I (PM)'	'T01.win'
+'Données brutes IGT témoins sains Montpellier I (PM)'	'T01.xls'
