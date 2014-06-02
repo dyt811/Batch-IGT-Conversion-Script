@@ -1,19 +1,25 @@
+%This script tries to read a specially format sized OnSet XLSX file that
+%has been prepared manually.
+
+%Last updated 2014-06-01 for IGT manual extraction from the database. 
+
 clc;
+clear;
+
+totalSubjects = 54;
+numberOfConditions = 10;
 
 %Looping through all 81 of my subjects.
-for subjectNumber = 0:80
+for subjectNumber = 0:(totalSubjects-1)
     
     rowRange = strcat ( ...
-        num2str(1 + subjectNumber*5), ...
+        num2str(1 + subjectNumber*numberOfConditions), ...
         ':', ... 
-        num2str(5+subjectNumber*5) ...
+        num2str(numberOfConditions+subjectNumber*numberOfConditions) ...
         );
     
     % Will have to change the row indexer 1:5 later on.
-    [ConditionOnsetTime ConditionName] = xlsread('K:\ResearchData\2013-09 fMRI Connectivity\fMRIdata\onsets\IGT\IGT Onsets for Matlab XLSread.xlsx', 'NoFormulaOnsets',rowRange);
-
-    % set conditions
-    numberOfConditions = 5;
+    [ConditionOnsetTime ConditionName] = xlsread('C:\GitHub\Batch-IGT-Conversion-Script\RelativeStudyIGT\RAW\2014-06-01 T1952 Serialized.xlsm', 'RemoveNaN',rowRange);
 
     % Check the size of both imported text and numerical variables.
     % They must both have FIVE entries. AB, CD, Control, LOSS, WIN. 
@@ -24,20 +30,21 @@ for subjectNumber = 0:80
     for columnIndex = 1 : numberOfConditions
         % and name the column
         % sample output should be like: AB{1} = XXXXXX
-        eval( [ ConditionName{columnIndex, 3}, ' = ConditionOnsetTime(columnIndex,:);' ] ); 
+        ConditionName{columnIndex, 3} = ConditionOnsetTime(columnIndex,:);
     end
 
     %Declare names cell array.
     names = cell(1,6);
     %Fill in the name cell array. 
-    names = transpose (ConditionName (:,3))
+    names = transpose (ConditionName (:,1))
 
     %Declare onests, durations
-    onsets = cell(1,5);
-    durations=cell(1,5);
+    onsets = cell(1,6);
+    durations = cell(1,6);
 
     %Fill in the onsets cell array. 
-    for cellIndex = 1 : numberOfConditions
+    %for cellIndex = 1 : numberOfConditions
+    for cellIndex = 1 : 6
         %Put onsets from imported double into onset array. 
         onsets{cellIndex} = ConditionOnsetTime(cellIndex,:);
         % This magical line is suppose to CLEAN all NaN values that generated during the import process.
@@ -46,6 +53,8 @@ for subjectNumber = 0:80
         onsets{cellIndex} = cleanedArray;
         durations{cellIndex} = 0;
     end
+    names(:,7:1:10) = [];
+    
 
-    save(ConditionName{1,1},'names', 'onsets', 'durations');
+    save(num2str(ConditionName{10,3}(1)),'names', 'onsets', 'durations');
 end
