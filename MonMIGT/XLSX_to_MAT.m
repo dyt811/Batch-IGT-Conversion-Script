@@ -6,7 +6,7 @@
 clc;
 clear;
 
-totalSubjects = 54;
+totalSubjects = 1;
 numberOfConditions = 10;
 
 %Looping through all 81 of my subjects.
@@ -19,7 +19,7 @@ for subjectNumber = 0:(totalSubjects-1)
         );
     
     % Will have to change the row indexer 1:5 later on.
-    [ConditionOnsetTime ConditionName] = xlsread('C:\GitHub\Batch-IGT-Conversion-Script\RelativeStudyIGT\RAW\2014-06-01 T1952 Serialized.xlsm', 'RemoveNaN',rowRange);
+    [ConditionOnsetTime ConditionName] = xlsread('C:\GitHub\Batch-IGT-Conversion-Script\RelativeStudyIGT\RAW\2014-06-04 T1336 68023.xlsx', 'Sheet2',rowRange);
 
     % Check the size of both imported text and numerical variables.
     % They must both have FIVE entries. AB, CD, Control, LOSS, WIN. 
