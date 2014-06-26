@@ -20,7 +20,7 @@ arrayMainDirPath{9}='D:\Yang\Dropbox\Test\Données brutes IGT témoins affectifs M
 arrayMainDirPath{10}='D:\Yang\Dropbox\Test\Données brutes IGT témoins sains Montpellier I (Fabrice)';
 arrayMainDirPath{11}='D:\Yang\Dropbox\Test\Données brutes IGT témoins sains Montpellier I (PM)';
 arrayMainDirPath{12}='D:\Yang\Dropbox\Test\Données brutes IGT témoins sains Montpellier III (Sébastien)';
-arrayMainDirPath{13}='D:\Yang\Dropbox\Test\Julien Data';
+arrayMainDirPath{13}='D:\Yang\Dropbox\Past Conferences\2014-05-07 SOBP 2014\IGT';
 
 
 %Specify search range
@@ -179,16 +179,16 @@ for indexMainFolder = 13:13
                 group(indexMainFolder).TXTparticipant(indexFile).groupName = folderName;
                 group(indexMainFolder).TXTparticipant(indexFile).fileType = 'TXT';
                 group(indexMainFolder).TXTparticipant(indexFile).name = strTXTFileNameNoExtension;
-                group(indexMainFolder).TXTparticipant(indexFile).choiceArray=rawTXTColumnBData;
-                group(indexMainFolder).TXTparticipant(indexFile).winArray=rawTXTColumnCData;
-                group(indexMainFolder).TXTparticipant(indexFile).lossArray=rawTXTColumnDData;
+                group(indexMainFolder).TXTparticipant(indexFile).choiceArray = rawTXTColumnBData;
+                group(indexMainFolder).TXTparticipant(indexFile).winArray = rawTXTColumnCData;
+                group(indexMainFolder).TXTparticipant(indexFile).lossArray = rawTXTColumnDData;
             else
                 disp(['Data import FAILED for Subject: ',strTXTFileName])
                 failSubjectCount = failSubjectCount + 1;
                 failedSubjectArray{failSubjectCount,1} = folderName;
                 failedSubjectArray{failSubjectCount,2} = strTXTFileName;
             end
-            disp(['All data import has been done for Subject: ',strTXTFileName])
+            disp(['All data import has been done for Subject: ', strTXTFileName])
             
             %Close file ID or else might have overflow issue with incorrect
             %idFile
@@ -200,6 +200,8 @@ for indexMainFolder = 13:13
             %More variables to clear.
             clearvars strTXTFileName strTXTFullPathName strTXTPath strTXTFileNameNoExtension idFile
         end
+    else 
+        group(indexMainFolder).TXTparticipant=[];
     end
     
     
@@ -308,6 +310,8 @@ for indexMainFolder = 13:13
             clearvars intXLSColumnDData textXLSColumnDData rawXLSColumnDData
             
         end
+    else 
+        group(indexMainFolder).XLSparticipant=[];    
     end
     
     %===========================
@@ -438,7 +442,17 @@ for indexMainFolder = 13:13
             %More variables to clear.
             clearvars strIQDATFileName strIQDATFullPathName strIQDATPath strIQDATFileNameNoExtension idFile
         end
+    else 
+        group(indexMainFolder).IQDATparticipant=[]; 
     end
 end
+
 disp('All Participants have been processed')
+if isempty(group)==false
+    save('EVM_Ready_Export','group');
+end
+disp('Processing results have been saved in current direcotry as "EVM_Ready_Export.mat"')
+disp(pwd)
+
+
 
