@@ -1,9 +1,11 @@
 %This script tries to read a specially format sized OnSet XLSX file that
 %has been prepared manually.
 
-%Last updated 2014-06-01 for IGT manual extraction from the database.
-%Last updated 2014-06-15 for extracting only specific components of the
+%Update 2014-06-29 for 2s duration extraciton. 
+%Updated 2014-06-15 for extracting only specific components of the
 %XLSX file.
+%Updated 2014-06-01 for IGT manual extraction from the database.
+
 clc;
 clear;
 
@@ -65,7 +67,7 @@ for subjectNumber = 0:(totalSubjects-1)
         onsets{1} = cleanedArray;
         durations{1} = 0;
         
-        
+        %Win extraction.
         cellIndex = 8
         %Put onsets from imported double into onset array.
         onsets{2} = ConditionOnsetTime(cellIndex,:);
@@ -75,8 +77,9 @@ for subjectNumber = 0:(totalSubjects-1)
         x = onsets{2};
         cleanedArray = x(isfinite(x));
         onsets{2} = cleanedArray;
-        durations{2} = 0;
-    
+        durations{2} = 2;
+        
+        %Lose extraction.
         cellIndex = 9
         %Put onsets from imported double into onset array.
         onsets{3} = ConditionOnsetTime(cellIndex,:);        
@@ -86,7 +89,7 @@ for subjectNumber = 0:(totalSubjects-1)
         x = onsets{3};
         cleanedArray = x(isfinite(x));
         onsets{3} = cleanedArray;
-        durations{3} = 0;
+        durations{3} = 2;
 %     
 %     %Fill in the onsets cell array.
 %     
