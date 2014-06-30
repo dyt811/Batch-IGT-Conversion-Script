@@ -7,7 +7,7 @@ clc
 clear
 
 %Load the extractor variable.
-load('EVM_Ready_Export.mat');
+load('D:\Yang\Dropbox\Test\Julien Data\Test 2\EVM_Ready_Export.mat');
 
 %Try to get group size.
 intMainFolders = size(group,2);

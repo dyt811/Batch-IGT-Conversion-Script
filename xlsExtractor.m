@@ -20,7 +20,7 @@ arrayMainDirPath{9}='D:\Yang\Dropbox\Test\Données brutes IGT témoins affectifs M
 arrayMainDirPath{10}='D:\Yang\Dropbox\Test\Données brutes IGT témoins sains Montpellier I (Fabrice)';
 arrayMainDirPath{11}='D:\Yang\Dropbox\Test\Données brutes IGT témoins sains Montpellier I (PM)';
 arrayMainDirPath{12}='D:\Yang\Dropbox\Test\Données brutes IGT témoins sains Montpellier III (Sébastien)';
-arrayMainDirPath{13}='D:\Yang\Dropbox\Past Conferences\2014-05-07 SOBP 2014\IGT';
+arrayMainDirPath{13}='D:\Yang\Dropbox\Test\Julien Data\Test 2';
 
 
 %Specify search range
