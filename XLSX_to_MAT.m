@@ -1,10 +1,12 @@
 %This script tries to read a specially format sized OnSet XLSX file that
 %has been prepared manually.
 
+%Update Log:
 %Update 2014-06-29 for 2s duration extraciton. 
 %Updated 2014-06-15 for extracting only specific components of the
 %XLSX file.
 %Updated 2014-06-01 for IGT manual extraction from the database.
+%Updated 2014-09-07 for altered IGT onset extraction for outcome stage. 
 
 clc;
 clear;
@@ -70,26 +72,26 @@ for subjectNumber = 0:(totalSubjects-1)
         %Win extraction.
         cellIndex = 8
         %Put onsets from imported double into onset array.
-        onsets{2} = ConditionOnsetTime(cellIndex,:);
+        onsets{2} = ConditionOnsetTime(cellIndex,:)+1;
         %Fill in the name cell array.
         names{2} = ConditionName{cellIndex,1};       
         % This magical line is suppose to CLEAN all NaN values that generated during the import process.
         x = onsets{2};
         cleanedArray = x(isfinite(x));
         onsets{2} = cleanedArray;
-        durations{2} = 2;
+        durations{2} = 1;
         
         %Lose extraction.
         cellIndex = 9
         %Put onsets from imported double into onset array.
-        onsets{3} = ConditionOnsetTime(cellIndex,:);        
+        onsets{3} = ConditionOnsetTime(cellIndex,:)+1;        
         %Fill in the name cell array.
         names{3} = ConditionName{cellIndex,1};                
         % This magical line is suppose to CLEAN all NaN values that generated during the import process.
         x = onsets{3};
         cleanedArray = x(isfinite(x));
         onsets{3} = cleanedArray;
-        durations{3} = 2;
+        durations{3} = 1;
 %     
 %     %Fill in the onsets cell array.
 %     
