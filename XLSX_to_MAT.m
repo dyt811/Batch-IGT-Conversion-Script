@@ -114,5 +114,5 @@ for subjectNumber = 0:(totalSubjects-1)
 %     %names(:,cellIndexSpan:1:numberOfConditions) = [];
     
     cd ('C:\GitHub\Batch-IGT-Conversion-Script\RelativeStudyIGT')
-    save(num2str(ConditionName{10,3}(1)),'names', 'onsets', 'durations');
+    save(num2str((ConditionName{10,3}(1))/1000),'names', 'onsets', 'durations');
 end
